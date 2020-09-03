@@ -1,5 +1,7 @@
 package com.stuffy.web;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,22 @@ public class StuffyController {
 		}
 		return jr;
 	}
+	
+	@GetMapping("/list")
+	public List<Stuffy> listStuffiesNoJR() {
+		List<Stuffy> stuffies = stuffyRepo.findAll();
+		ArrayList<Stuffy> stuffyArrayList = new ArrayList<>(stuffies);
+		System.out.println(stuffyArrayList);
+		return stuffies;
+	}
+	
+	@GetMapping("/list-by-color")
+	public List<Stuffy> listStuffiesByColor(@RequestParam String color) {
+		List<Stuffy> stuffies = stuffyRepo.findAllByColor(color);
+		return stuffies;
+	}
+	
+	
 	
 	// get - return 1 stuff for the given id
 	@GetMapping("/{id}")

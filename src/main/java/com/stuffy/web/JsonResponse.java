@@ -52,7 +52,7 @@ public class JsonResponse {
 	}
 
 	public static JsonResponse getInstance(Exception e) {
-		return new JsonResponse(e);
+		return new JsonResponse(e.getMessage());
 	}
 	// Create instance w/ an error message
 	public static JsonResponse getInstance(String msg) {
